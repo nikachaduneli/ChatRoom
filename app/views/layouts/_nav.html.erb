@@ -1,8 +1,11 @@
 
 <div class="ui large inverted menu">
   <a class="item">
-    ChatRooms
+    <%= link_to root_path do %>
+      <%= image_tag "favicon.ico",  height: 50%>
+    <% end %>
   </a>
+  <%= link_to "Chatroom", root_path, class: "item" %>
   <a class="item">
     Messages
   </a>
@@ -16,7 +19,7 @@
       </div>
     </div>
     <div class="item">
-      <div class="ui primary button">Sign Up</div>
+      <%= link_to "Log in", login_path, class: "ui primary button" %>
     </div>
   </div>
 </div>
