@@ -1,6 +1,5 @@
 <div class="ui placeholder segment">
-  <div class="ui two column very relaxed stackable grid">
-    <div class="column">
+  <div>
       <%= render 'shared/errors', obj: @user %>
       <%= form_for(:user, html: {class: "ui form", role: "form"}, url: signup_path) do |f| %>
         <div class="field">
@@ -19,6 +18,5 @@
         </div>
         <%= f.button "Sign Up", class: "ui  submit button" %>
       <% end %>
-    </div>
   </div>
 </div>

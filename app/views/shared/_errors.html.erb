@@ -1,10 +1,17 @@
 <div>
   <% if obj.errors.any? %>
-    <h2>The following errors prevented the <%= obj.class %> from being saved</h2>
-    <ul>
-      <% obj.errors.full_messages.each do |msg| %>
-        <li class="text-danger"><%= msg %></li>
-      <% end %>
-    </ul>
+    <div class="ui message">
+      <div class="header">
+        The following errors prevented the <%= obj.class %> from being saved
+      </div>
+      <i class="close icon"></i>
+      <ul class="list">
+        <% obj.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 </div>

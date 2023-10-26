@@ -6,18 +6,11 @@
     <div class="ui fluid raised card chatbox">
       <div class="content">
         <div class="ui feed">
-         <%= render 'messages' %>
+          <%= render 'messages' %>
         </div>
       </div>
       <div class="extra content">
-        <form class="ui reply form">
-          <div class="field">
-            <div class="ui fluid icon input">
-              <input type="text" placeholder="Enter a message...">
-              <i class="bordered inverted edit icon"></i>
-            </div>
-          </div>
-        </form>
+        <%= render 'messages/new' %>
       </div>
     </div>
   </div>
