@@ -14,4 +14,4 @@ $(document).on('turbo:load', function() {
                 .transition('fade')
             ;
         })
-});
+});import "./channels"

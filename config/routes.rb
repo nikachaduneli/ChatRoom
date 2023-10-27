@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   post 'signup', to:'users#create'
 
   resource :message, only: [:create]
+
+  mount ActionCable.server, at: '/cable'
 end
