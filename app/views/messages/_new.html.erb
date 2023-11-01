@@ -1,5 +1,5 @@
 <% if logged_in? %>
-  <%= form_for(:message, html: {class: "ui reply form", role: "form"}, url: message_url) do |f| %>
+  <%= form_for(:message, html: {class: "ui reply form", role: "form"},  url: message_url) do |f| %>
     <div class="field">
       <div class="ui fluid icon input">
         <%= f.text_field :body, placeholder: "Enter a message..." %>

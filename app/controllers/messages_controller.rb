@@ -5,8 +5,7 @@ class MessagesController < ApplicationController
     @message = Message.new(params.require(:message).permit(:body))
     @message.user = current_user
     if @message.save
-      # redirect_to root_path
-      ActionCable.server.broadcast "chatroom_channel", {mod_message: message_render(@message)}
+      ActionCable.server.broadcast "chatroom_channel", {message_body: message_render(@message)}
     end
   end
 
