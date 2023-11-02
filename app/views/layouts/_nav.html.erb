@@ -18,6 +18,15 @@
         <a class="item">Spanish</a>
       </div>
     </div>
+
+    <div class="ui category search">
+      <%= form_tag(search_path, method: "get", class: "d-flex") do%>
+        <div class="ui icon input">
+            <%= search_field_tag :search, params[:search], placeholder: 'Article', class: "prompt", required: true %>
+            <%= button_tag '<i class="search icon inverted"></i>'.html_safe, class: 'message-submit' %>
+        </div>
+      <%end %>
+    </div>
     <div class="item">
       <% if logged_in? %>
         <%= link_to "Log out", logout_path, class: "ui primary button", data: {turbo_method: :delete} %>

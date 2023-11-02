@@ -10,5 +10,9 @@ Rails.application.routes.draw do
 
   resource :message, only: [:create]
 
+  get 'search', to: 'users#search'
+  resource :users, only: [:index]
+
+
   mount ActionCable.server => '/cable'
 end

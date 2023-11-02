@@ -4,6 +4,8 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def index
+  end
   def create
     @user = User.new(user_params)
     if @user.save
@@ -14,6 +16,14 @@ class UsersController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+  def search
+    unless params[:search].blank?
+      @parameter = params[:search].downcase
+      @users = User.all.where('lower(username) like :search', search: "%#{@parameter}%")
+      render :index
+    end
+  end
+
 
   private
   def user_params
