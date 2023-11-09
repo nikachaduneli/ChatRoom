@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get 'search', to: 'users#search'
   resources :users, only: [:index]
+  resources :friend_requests, only: [:create, :index, :destroy, :update]
 
   mount ActionCable.server => '/cable'
 end

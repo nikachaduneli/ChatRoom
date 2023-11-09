@@ -1,6 +1,14 @@
-
-<div class="results">
+<table class="ui celled table">
+  <thead>
+  <tr>
+    <th>UserName</th>
+    <th>Status</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
   <% @users.each do |user| %>
-    <p><%= user.username %></p>
+    <%= render user %>
   <% end %>
-</div>
+  </tbody>
+</table>

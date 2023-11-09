@@ -1,0 +1,16 @@
+<tr>
+  <td><%= user.username %></td>
+  <td><%= current_user.friends_with(user.id)? 'Friendd':'--'   %></td>
+  <td>
+    <% unless current_user.friends_with(user.id) %>
+      <%= button_to "add friend",
+                    controller: "friend_requests",
+                    action: "create",
+                    method: :post,
+                    params: { request:
+                                { user_id: user.id, sender_id: current_user }
+                    },
+                    class: 'ui red button'%>
+      </td>
+    <%end %>
+    </tr>

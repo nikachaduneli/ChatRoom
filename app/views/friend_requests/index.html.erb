@@ -1,0 +1,12 @@
+<table class="ui celled table">
+  <thead>
+  <tr><th>Username</th>
+    <th>status</th>
+    <th>Actions</th>
+  </tr></thead>
+  <tbody>
+    <% @requests.each do |request| %>
+      <%= render 'request', request: request %>
+    <% end %>
+  </tbody>
+</table>

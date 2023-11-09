@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def index
     if logged_in?
-      @users = current_user.friends
+      @users = User.all
     end
   end
 
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     unless params[:search].blank?
       @parameter = params[:search].downcase
       @users = User.all.where('lower(username) like :search', search: "%#{@parameter}%")
-      # render :index
+      render :index
     end
   end
 

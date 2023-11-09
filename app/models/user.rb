@@ -5,4 +5,11 @@ class User < ApplicationRecord
 
   has_many :friendships
   has_many :friends, through: :friendships
+
+  has_many :sent_requests, class_name: "FriendRequest", foreign_key: 'sender_id'
+  has_many :received_requests, class_name: "FriendRequest", foreign_key: 'user_id'
+
+  def friends_with(id_of_friend)
+    self.friends.where(id: id_of_friend).exists?
+  end
 end

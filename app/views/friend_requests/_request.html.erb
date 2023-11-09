@@ -1,0 +1,13 @@
+
+<tr>
+  <td data-label="Username"><%=request.sender.username %></td>
+  <td data-label="Status"><%=request.status %></td>
+  <td data-label="Actions">
+    <% if request.status == FriendRequestsHelper::RequestStates::PENDING%>
+      <div class="ui grid">
+        <%= button_to "Decline", friend_request_path(request), method: :delete, class: 'ui red button'%>
+        <%= button_to "Accept", friend_request_path(request), method: :patch, class: 'ui green button' %>
+      </div>
+    <% end %>
+  </td>
+</tr>
