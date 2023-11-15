@@ -9,10 +9,9 @@ class FriendRequestsController < ApplicationController
 
   def create
     @request = FriendRequest.new(request_params)
-    unless @request.already_exists? or @request.receiver.friends_with(@request.sender.id)
+    if @request.valid? && !@request.receiver.friends_with(@request.sender.id)
       @request.save!
     end
-    # end
     redirect_to users_path
   end
 
@@ -28,7 +27,14 @@ class FriendRequestsController < ApplicationController
     @request.receiver.friends << @request.sender
     @request.status = RequestStates::ACCEPTED
     @request.save!
-    redirect_to friend_requests_path
+
+    chat = Chat.new(user_1: @request.sender, user_2: @request.receiver)
+    if chat.save
+      flash[:notice] = "#{@request.sender.username} has been added to your friends"
+      redirect_to friend_requests_path
+    else
+      redirect_to friend_requests_path, status: :unprocessable_entity
+    end
   end
   def request_params
     params[:request][:status] = RequestStates::PENDING

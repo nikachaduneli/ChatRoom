@@ -3,10 +3,13 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(params.require(:message).permit(:body))
-    @message.user = current_user
+    @message.sender = current_user
     if @message.save
       ActionCable.server.broadcast "chatroom_channel", {message_body: message_render(@message)}
+    else
+      render json: { errors: @direct_message.errors.full_messages }, status: :unprocessable_entity
     end
+
   end
 
   def message_render(message)

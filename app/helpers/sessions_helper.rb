@@ -8,7 +8,7 @@ module SessionsHelper
 
   def require_user
     unless logged_in?
-      error_403
+      redirect_to login_path
     end
   end
 

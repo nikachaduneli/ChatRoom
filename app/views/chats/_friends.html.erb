@@ -1,0 +1,13 @@
+<div class="four wide column">
+  <div class="ui fluid raised card chatbox">
+    <div class="content">
+      <% if logged_in? %>
+        <% current_user.friends.each do |friend| %>
+          <div class="ui inverted vertical menu">
+            <%= link_to friend.username,  chat_url(current_user.chat_with(friend.id)), class: 'item'%>
+          </div>
+    <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

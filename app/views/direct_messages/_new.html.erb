@@ -1,0 +1,13 @@
+<% if logged_in? %>
+  <%= form_for(:direct_message, html: {class: "ui reply form", role: "form"},  url: new_direct_message_path) do |f| %>
+    <div class="field">
+      <div class="ui fluid icon input">
+        <%= f.text_field :body, placeholder: "Enter a message..." %>
+        <%= f.hidden_field :sender_id, value: current_user.id %>
+        <%= f.hidden_field :receiver_id, value: @friend_id %>
+        <%= f.hidden_field :chat_id, value: params[:chat_id] %>
+        <%= f.button '<i class="bordered   paper plane icon" title="send"></i>'.html_safe, class: 'message-submit' %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

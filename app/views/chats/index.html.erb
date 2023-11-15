@@ -6,7 +6,7 @@
     <div class="ui fluid raised card chatbox">
       <div class="scrolling content" id="scrolling-container">
         <div class="ui  feed " style="overflow-y: scroll; height:400px;" id="message-container">
-          <%= render @messages %>
+          <%= render 'messages' %>
         </div>
       </div>
     </div>
@@ -14,18 +14,5 @@
       <%= render 'messages/new' %>
     </div>
   </div>
-
-  <div class="four wide column">
-    <div class="ui fluid raised card chatbox">
-      <div class="content">
-        <div class="ui inverted vertical menu">
-          <% if logged_in? %>
-            <% current_user.friends.each do |friend| %>
-              <p class="item"><%= friend.username %></p>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render 'friends' %>
 </div>

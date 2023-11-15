@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_04_193332) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_13_062759) do
+  create_table "chats", force: :cascade do |t|
+    t.integer "user_1_id"
+    t.integer "user_2_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "direct_messages", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.integer "chat_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "friend_requests", force: :cascade do |t|
     t.integer "user_id"
     t.integer "sender_id"
@@ -29,7 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_04_193332) do
 
   create_table "messages", force: :cascade do |t|
     t.text "body"
-    t.integer "user_id"
+    t.integer "sender_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
