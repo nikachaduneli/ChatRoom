@@ -1,16 +1,17 @@
 class DirectMessageChannel < ApplicationCable::Channel
   def subscribed
-    # chatroom = Chat.find(params[:chatroom_id])
-    # if can_subscribe?(chatroom)
+    if user_has_permission?
       stream_from "chat_#{params[:chatroom_id]}"
-    # end
-
+    end
   end
 
-  def can_subscribe?
-
-  end
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
+  end
+
+
+  private
+  def user_has_permission?
+
   end
 end
